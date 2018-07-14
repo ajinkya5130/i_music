@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,LoadingController } from 'ionic-angular';
 import { MusicProvider } from '../../providers/music/music';
 @Component({
   selector: 'page-home',
@@ -9,18 +9,26 @@ import { MusicProvider } from '../../providers/music/music';
 
 export class HomePage {
   public allMusic = [];
-  constructor(public navCtrl: NavController, public musicProvide: MusicProvider) {
+  constructor(public loadingCtrl: LoadingController
+    ,public navCtrl: NavController
+    , public musicProvide: MusicProvider) {
 
   }
 
   ionViewDidLoad() {
+
+    let loadingcontroller = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loadingcontroller.present();
     this.musicProvide.getMusicList().subscribe(
       xyz => {
         this.allMusic = xyz;
-        console.log('Ajinkya');
 
+        loadingcontroller.dismiss();
       }, error => {
-        console.log('error');
+        console.log('error ',error);
       });
 
   }
