@@ -19,7 +19,7 @@ export class MusicProvider {
   }
 
   getMusicList(): Observable<any>{
-   return this.http.get(APIMusicList);
+   return this.http.get<any[]>(APIMusicList); //any type
   }
 
 }
