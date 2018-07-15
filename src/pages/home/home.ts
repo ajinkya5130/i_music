@@ -84,6 +84,20 @@ export class HomePage {
           console.log("Error "+errorLOg);
         })
       }},
+      
+    //Share
+    {text: "Share",icon:"share",
+    handler:()=>{
+      loadingcontroller.present();
+      this.socialSharing.share(music.name,"",music.image,music.music_url).then( 
+        (data)=>{
+            console.log("Data: "+data);
+        }
+      ).catch((errorLOg)=>{
+        loadingcontroller.dismiss();
+        console.log("Error "+errorLOg);
+      })
+    }},
         {
           text:"Cancle",
           icon:"close",
