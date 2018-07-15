@@ -11,25 +11,31 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MusicProvider } from '../providers/music/music';
 import {enableProdMode} from '@angular/core';
+import { PlaysongPage } from '../pages/playsong/playsong';
+import { Media } from '@ionic-native/media';
+
 enableProdMode();
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    PlaysongPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp), HttpClientModule,
+    IonicModule.forRoot(MyApp), HttpClientModule
   ],
   
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    PlaysongPage
   ],
   providers: [
+    Media,
     SocialSharing,
     StatusBar,
     SplashScreen,

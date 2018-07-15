@@ -7,12 +7,30 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>playsong</ion-title>
+    <ion-title>{{music.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-only (click) = "stopmusic()" >
+        <ion-icon name="sqare"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col>
+      
+        <button ion-button icon-only (click) = "playmusic()">
+            <ion-icon name="play"></ion-icon>
+          </button>
+    </ion-col>
+    <ion-col>
+      
+        <button ion-button icon-only (click) = "pausemusic()">
+            <ion-icon name="pause"></ion-icon>
+          </button>
+    </ion-col>
+  </ion-row>
 </ion-content>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController,LoadingController,ActionSheetController } from 'ionic-angular';
 import { MusicProvider } from '../../providers/music/music';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { PlaysongPage } from '../playsong/playsong';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -106,6 +107,13 @@ export class HomePage {
       ]
     });
     shareSongActionSheet.present();
+  }
+
+  playMusic(music){
+    this.navCtrl.push(PlaysongPage,{
+      music:music
+    }   );
+
   }
 
   ionViewDidLoad() {

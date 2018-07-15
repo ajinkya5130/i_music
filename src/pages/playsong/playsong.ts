@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {  NavController, NavParams } from 'ionic-angular';
+
+import { Media, MediaObject } from '@ionic-native/media';
 
 /**
  * Generated class for the PlaysongPage page.
@@ -8,14 +10,51 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-playsong',
   templateUrl: 'playsong.html',
 })
 export class PlaysongPage {
+  public music = {} ;
+  private songMedia :MediaObject =null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private isMediaPaused =false;
+  constructor(private media: Media,public navCtrl: NavController, public navParams: NavParams) {
+    this.music = this.navParams.get("music");
+  }
+  playmusic(){
+    if(this.songMedia === null){
+      this.songMedia = this.media.create(this.music["music_url"]);
+      this.songMedia.play();
+      
+
+    }else{
+      if(this.isMediaPaused === true){
+        this.songMedia.play();
+        this.isMediaPaused = false;
+      }
+    }
+
+  }
+  stopmusic(){
+
+    
+    if(this.songMedia !== null){
+      this.songMedia.stop();
+      this.songMedia.release();
+      this.songMedia =null;
+    }
+
+  }
+  pausemusic(){
+
+    
+    if(this.songMedia !== null){
+      this.songMedia.pause();
+      this.isMediaPaused =true;
+
+    }
+
   }
 
   ionViewDidLoad() {
